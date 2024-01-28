@@ -8,10 +8,10 @@ const userSchema = new Schema(
     lname: {
       type: String
     },
-    pswd: {
+    email: {
       type: String
     },
-    email: {
+    password: {
       type: String
     }
   },
