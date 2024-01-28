@@ -20,12 +20,12 @@ var newUser = exports.newUser = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          if (!(!req.body || !req.body.password)) {
+          if (!(!req.body.email || !req.body.password)) {
             _context.next = 3;
             break;
           }
           return _context.abrupt("return", res.status(_httpStatusCodes["default"].BAD_REQUEST).json({
-            message: 'Password is required'
+            message: 'Email/Password is required'
           }));
         case 3:
           _context.next = 5;
@@ -68,11 +68,11 @@ var login = exports.login = /*#__PURE__*/function () {
           isAuthenticated = _context2.sent;
           if (isAuthenticated) {
             res.status(_httpStatusCodes["default"].OK).json({
-              message: 'Authentication successful'
+              message: 'Login successful'
             });
           } else {
             res.status(_httpStatusCodes["default"].UNAUTHORIZED).json({
-              message: 'Authentication failed'
+              message: 'Login failed'
             });
           }
           _context2.next = 11;
@@ -80,7 +80,7 @@ var login = exports.login = /*#__PURE__*/function () {
         case 7:
           _context2.prev = 7;
           _context2.t0 = _context2["catch"](0);
-          console.error(_context2.t0); // Log errors for debugging
+          console.error(_context2.t0);
           res.status(_httpStatusCodes["default"].INTERNAL_SERVER_ERROR).json({
             message: 'Error during authentication'
           });

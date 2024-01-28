@@ -6,8 +6,8 @@ import * as UserService from '../services/user.service';
 export const newUser = async (req, res, next) => {
   try {
 
-    if (!req.body || !req.body.password) {
-      return res.status(HttpStatus.BAD_REQUEST).json({ message: 'Password is required' });
+    if (!req.body.email || !req.body.password) {
+      return res.status(HttpStatus.BAD_REQUEST).json({ message: 'Email/Password is required' });
     }
     
     const data = await UserService.newUser(req.body);
@@ -26,12 +26,12 @@ export const login = async (req, res, next) => {
   try {
     const isAuthenticated = await UserService.authenticate(req.body);
     if (isAuthenticated) {
-      res.status(HttpStatus.OK).json({ message: 'Authentication successful' });
+      res.status(HttpStatus.OK).json({ message: 'Login successful' });
     } else {
-      res.status(HttpStatus.UNAUTHORIZED).json({ message: 'Authentication failed' });
+      res.status(HttpStatus.UNAUTHORIZED).json({ message: 'Login failed' });
     }
   } catch (error) {
-    console.error(error); // Log errors for debugging
+    console.error(error);
     res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Error during authentication' });
   }
 };

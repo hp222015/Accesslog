@@ -53,29 +53,27 @@ var authenticate = exports.authenticate = /*#__PURE__*/function () {
           });
         case 3:
           data = _context2.sent;
-          console.log(body.email);
-          console.log(data);
           if (data) {
-            _context2.next = 8;
+            _context2.next = 6;
             break;
           }
           return _context2.abrupt("return", false);
-        case 8:
-          _context2.next = 10;
+        case 6:
+          _context2.next = 8;
           return bcrypt.compare(body.password, data.password);
-        case 10:
+        case 8:
           isMatch = _context2.sent;
           return _context2.abrupt("return", isMatch);
-        case 14:
-          _context2.prev = 14;
+        case 12:
+          _context2.prev = 12;
           _context2.t0 = _context2["catch"](0);
-          console.error(_context2.t0); // Log errors for debugging
+          console.error(_context2.t0);
           return _context2.abrupt("return", false);
-        case 18:
+        case 16:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 14]]);
+    }, _callee2, null, [[0, 12]]);
   }));
   return function authenticate(_x2) {
     return _ref2.apply(this, arguments);

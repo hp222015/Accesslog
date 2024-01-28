@@ -22,13 +22,13 @@ export const newUser = async (body) => {
 export const authenticate = async (body) => {
   try {
     const data = await User.findOne({ email: body.email });
-    console.log(body.email);
-    console.log(data);
-    if (!data) return false; // Handle user not found
+    // console.log(body.email);
+    // console.log(data);
+    if (!data) return false; 
     const isMatch = await bcrypt.compare(body.password, data.password);
-    return isMatch; // Return boolean indicating authentication success
+    return isMatch; 
   } catch (error) {
-    console.error(error); // Log errors for debugging
+    console.error(error); 
     return false; // Return false on errors
   }
 };
