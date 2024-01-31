@@ -7,15 +7,15 @@ import { authenticate } from '../services/user.service';
 
 const router = express.Router();
 // creating notes
-router.post('',userAuth,newNotesValidator,NotesController.createNotes);
+router.post('',newNotesValidator,NotesController.createNotes);
 //route to get all notes
-router.get('', userAuth,NotesController.notesRecord);
+router.get('',NotesController.notesRecord);
 
 //route to get a single user by their notes id
-router.get('/:_id', userAuth,NotesController.getNote);
+router.get('/:_id',NotesController.getNote);
 
 //route to update a single user by their notes id
-router.put('/:_id', userAuth,NotesController.updateNote);
+router.put('/:_id',NotesController.updateNote);
 
 //route to delete a single user by their notes id
 router.delete('/:_id', NotesController.deleteNote);
