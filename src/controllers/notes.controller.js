@@ -2,9 +2,9 @@ import HttpStatus from 'http-status-codes';
 import * as NotesService from '../services/notes.service';
 
 // to get all notes
-export const getAllNotes = async (req, res, next) => {
+export const notesRecord = async (req, res, next) => {
       try {
-        const data = await NotesService.getAllNotes();
+        const data = await NotesService.notesRecord();
         res.status(HttpStatus.OK).json({
           code: HttpStatus.OK,
           data: data,
@@ -70,20 +70,5 @@ export const deleteNote = async (req, res, next) => {
         next(error);
       }
     };
-
-//for login
-// export const login = async (req, res, next) => {
-//   try {
-//     const isAuthenticated = await NotesService.authenticate(req.body);
-//     if (isAuthenticated) {
-//       res.status(HttpStatus.OK).json({ message: 'Login successful' });
-//     } else {
-//       res.status(HttpStatus.UNAUTHORIZED).json({ message: 'Login failed: invalid password' });
-//     }
-//   }
-//   catch (error) {
-//     next(error);
-//   }
-// };
 
 

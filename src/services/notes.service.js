@@ -1,9 +1,8 @@
 import Notes from '../models/notes.model';
 const bcrypt = require('bcrypt');
-import jwt from "jsonwebtoken";
 
 // get all notes
-export const getAllNotes = async () => {
+export const notesRecord = async () => {
       const data = await Notes.find();
       return data;
     };
@@ -43,21 +42,3 @@ export const deleteNote = async (id) => {
     };
 
 
-
-
-
-// for login
-export const authenticate = async (body) => {
-    const data = await Notes.findOne({ email: body.email });
-    if (!data) 
-    throw new Error('Invalid Email');
-    const isMatch = await bcrypt.compare(body.password, data.password);
-    
-    if(isMatch)
-    {
-      // changes made
-      var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
-      return token;
-    }
-    return isMatch; 
-};

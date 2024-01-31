@@ -27,4 +27,7 @@ export const userAuth = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+// export const adminAuth =async(req,res,next) =>{
+//   try{}
+// }
 };

@@ -9,7 +9,7 @@ const router = express.Router();
 // creating notes
 router.post('',userAuth,newNotesValidator,NotesController.createNotes);
 //route to get all notes
-router.get('', userAuth,NotesController.getAllNotes);
+router.get('', userAuth,NotesController.notesRecord);
 
 //route to get a single user by their notes id
 router.get('/:_id', userAuth,NotesController.getNote);
