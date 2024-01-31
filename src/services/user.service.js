@@ -4,7 +4,7 @@ require('dotenv').config();
 import jwt from "jsonwebtoken";
 
 // for registration
-export const newUser = async (body) => {
+export const register = async (body) => {
   
   const hashedPassword = await bcrypt.hash(body.password, 10);
 

@@ -3,10 +3,10 @@ import * as UserService from '../services/user.service';
 
 
 // for registration
-export const newUser = async (req, res, next) => {
+export const register = async (req, res, next) => {
   try {
 
-    const data = await UserService.newUser(req.body);
+    const data = await UserService.register(req.body);
     res.status(HttpStatus.CREATED).json({
       code: HttpStatus.CREATED,
       data: data,
