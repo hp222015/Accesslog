@@ -8,7 +8,7 @@ export const notesRecord = async (req, res, next) => {
         res.status(HttpStatus.OK).json({
           code: HttpStatus.OK,
           data: data,
-          message: 'All users fetched successfully'
+          message: 'All notes fetched successfully'
         });
       } catch (error) {
         next(error);

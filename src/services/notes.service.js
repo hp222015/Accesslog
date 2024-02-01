@@ -10,7 +10,7 @@ export const notesRecord = async () => {
 // for notes_creation
 export const createNotes = async (body) => {
 
-  // Create the user
+  // Create the notes
   const data = await Notes.create(body);
   return data;
 };

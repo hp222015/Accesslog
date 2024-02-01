@@ -10,7 +10,7 @@ export const register = async (req, res, next) => {
     res.status(HttpStatus.CREATED).json({
       code: HttpStatus.CREATED,
       data: data,
-      message: 'User created successfully'
+      message: 'User registered successfully'
     });
   }
   catch (error) {

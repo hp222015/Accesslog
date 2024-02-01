@@ -1,9 +1,14 @@
 import dotenv from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../src/swagger/swagger.json';
 dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+
+
+
 
 import routes from './routes';
 import database from './config/database';
@@ -27,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('combined', { stream: logStream }));
 
+app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 database();
 
 app.use(`/api/${api_version}`, routes());
