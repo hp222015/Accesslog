@@ -1,311 +1,236 @@
-
 {
-    "swagger": "2.0",
-    "info": 
+  "swagger": "2.0",
+  "info": {
+    "version": "V1",
+    "title": "Fundoo Notes App",
+    "description": "This is a place to store your notes"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1/",
+  "tags": [
     {
-      "version": "V1",
-      "title": "Fundoo Notes App",
-      "description": "This is a place to store your notes"
-    },
-    "host": "localhost:3000",
-    "basePath": "/api/v1/",
-    "tags": 
-    [
-      {
-        "name": "Notes",
-        "description": "Creating Notes......."
-      }
-    ],
-    "schemes": ["http"],
-    "consumes": ["application/json"],
-    "produces": ["application/json"],
-    "paths": 
-    {
-      "/users": 
-      {
-        "post": 
-        {
-          "tags": ["User"],
-          "description": "Register User...",
-          "parameters": [
-            {
-              "name": "Register new user",
-              "in": "body",
-              "description": "User Registration",
-              "schema": 
-              {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": ["application/json"],
-          "responses": 
+      "name": "Notes",
+      "description": "Creating Notes......."
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["User"],
+        "description": "Register User...",
+        "parameters": [
           {
-            "201": 
-            {
-              "description": "User Registered Successfully"
-            },
-            "500": 
-            {
-              "description": "Internal server error"
+            "name": "Register new user",
+            "in": "body",
+            "description": "User Registration",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "User Registered Successfully"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
         }
+      }
     },
-      "/login": 
-      {
-        "post": 
-        {
-          "tags": ["User"],
-          "description": "login user...",
-          "parameters": [
-            {
-              "name": "login user",
-              "in": "body",
-              "description": "login",
-              "schema": {
-                "$ref": "#/definitions/login"
-                        }
-            }
-          ],
-          "produces": ["application/json"],
-          "responses": 
+
+    "/users/login": {
+      "post": {
+        "tags": ["User"],
+        "description": "login user...",
+        "parameters": [
           {
-            "201": 
-            {
-              "description": "Login successful"
-            },
-            "500": 
-            {
-              "description": "Internal server error"
+            "name": "login user",
+            "in": "body",
+            "description": "login",
+            "schema": {
+              "$ref": "#/definitions/login"
             }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Login successful"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/notes": {
+      "post": {
+        "tags": ["Notes"],
+        "description": "Create a note...",
+        "parameters": [
+          {
+            "name": "create note",
+            "in": "body",
+            "description": "Note Creation",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Note created successfully"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         }
       },
-      "/notes":
-      {
-        "post":
-        {
-            "tags": ["Notes"],
-            "description": "Create a note...",
-            "parameters": 
-            [
-                {
-                    "name": "create note",
-                    "in": "body",
-                    "description":"Note Creation",
-                    "schema":
-                    {
-                        "$ref":"#/definitions/Note"
-                        
-                    }
-                }
-            ],
-            "produces":["application/json"],
-            "responses":
-            {
-                "201":
-                {
-                    "description":"Note created successfully"
-                },
-                "500":
-                {
-                    "description": "Internal server error"
-                }
+      "get": {
+        "tags": ["Notes"],
+        "description": "Fetch all notes...",
+        "parameters": [
+          {
+            "name": "Fetch notes",
+            "in": "body",
+            "description": "Gives you the notes",
+            "schema": {
+              "$ref": "#/definitions/Note"
             }
-
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Notes fetched successfully"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/notes/{:_id}": {
+      "get": {
+        "tags": ["Notes"],
+        "description": "Fetch notes with id...",
+        "parameters": [
+          {
+            "name": "Fetch notes with id",
+            "in": "body",
+            "description": "Gives your notes"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Note fetched successfully"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Notes"],
+        "description": "Update notes with id...",
+        "parameters": [
+          {
+            "name": "Modify notes with id",
+            "in": "body",
+            "description": "Modify your notes",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Note updated successfully"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Notes"],
+        "description": "Delete notes with id...",
+        "parameters": [
+          {
+            "name": "Delete notes with id",
+            "in": "body",
+            "description": "Deletes your notes",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Note deleted successfully"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "fname": {
+          "type": "string"
         },
-      },
-      "/notes":
-      {
-        "get":
-        {
-            "tags": ["Notes"],
-            "description": "Fetch all notes...",
-            "parameters":
-            [
-                "name": "Fetch notes",
-                "in": "body",
-                "description": "Gives you the notes",
-                "schema": 
-                {
-                    "$ref":"#/definitions/Note"
-                }
-            ],
-            "produces":["application/json"],
-            "responses":
-            {
-                "201":
-                {
-                    "description":"Notes fetched successfully"
-                },
-                "500":
-                {
-                    "description": "Internal server error"
-                }
-            }
-
-        }
-      },
-      "/notes/{_id}":
-      {
-        "get":
-        {
-            "tags": ["Notes"],
-            "description": "Fetch notes with id...",
-            "parameters":
-            [
-                "name": "Fetch notes with id",
-                "in": "body",
-                "description": "Gives your notes",
-                "schema": 
-                {
-                    "$ref":"#/definitions/Note"
-                }
-            ],
-            "produces":["application/json"],
-            "responses":
-            {
-                "201":
-                {
-                    "description":"Note fetched successfully"
-                },
-                "500":
-                {
-                    "description": "Internal server error"
-                }
-            }
-        }
-      },
-      "/notes/{_id}":
-      {
-        "put":
-        {
-            "tags": ["Notes"],
-            "description": "Update notes with id...",
-            "parameters":
-            [
-                "name": "Modify notes with id",
-                "in": "body",
-                "description":"Modify your notes",
-                "schema": 
-                {
-                    "$ref":"#/definitions/Note"
-                }
-            ],
-            "produces":["application/json"],
-            "responses":
-            {
-                "201":
-                {
-                    "description":"Note updated successfully"
-                },
-                "500":
-                {
-                    "description": "Internal server error"
-                }
-            }
-        }
-      },
-      "/notes/{_id}":
-      {
-        "delete":
-        {
-            "tags": ["Notes"],
-            "description": "Delete notes with id...",
-            "parameters":
-            [
-                "name": "Delete notes with id",
-                "in": "body",
-                "description": "Deletes your notes",
-                "schema": 
-                {
-                    "$ref":"#/definitions/Note"
-                }
-            ],
-            "produces":["application/json"],
-            "responses":
-            {
-                "201":
-                {
-                    "description":"Note deleted successfully"
-                },
-                "500":
-                {
-                    "description": "Internal server error"
-                }
-            }
+        "lname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
         }
       }
     },
-    "definitions": 
-    {
-      "User": 
-      {
-        "type": "object",
-        "properties": 
-        {
-          "fname": 
-          {
-            "type": "string"
-          },
-          "lname": 
-          {
-            "type": "string"
-          },
-          "email": 
-          {
-            "type": "string"
-          },
-          "password": 
-          {
-            "type": "string"
-          }
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
         }
-      },
-      "login": {
-        "type": "object",
-        "properties": 
-        {
-          "email": 
-          {
-            "type": "string"
-          },
-          "password": 
-          {
-            "type": "string"
-          }
-        }
-      },
-      "Note": 
-      {
-        "type": "object",
-        "properties": 
-        {
-          "title": 
-          {
-            "type": "string"
-          },
-          "description": 
-          {
-            "type": "string"
-          }
-        }
+      }
     },
-    "securityDefinitions": 
-    {
-      "JWT": 
-      {
+    "Note": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+    },
+    "securityDefinitions": {
+      "JWT": {
         "type": "apiKey",
         "name": "Authorization",
         "in": "header"
       }
-    },
-    "security": 
-    [
-      {
-        "JWT": []
-      }
-    ]
-  }
+    }
 }

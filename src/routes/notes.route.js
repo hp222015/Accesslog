@@ -1,9 +1,7 @@
-// changes made
 import express from 'express';
 import * as NotesController from '../controllers/notes.controller';
 import { newNotesValidator } from '../validators/notes.validator';
 import { userAuth } from '../middlewares/auth.middleware';
-import { authenticate } from '../services/user.service';
 
 const router = express.Router();
 // creating notes
