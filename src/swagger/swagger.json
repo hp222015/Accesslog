@@ -90,21 +90,16 @@
           "500": {
             "description": "Internal server error"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "get": {
         "tags": ["Notes"],
-        "description": "Fetch all notes...",
-        "parameters": [
-          {
-            "name": "Fetch notes",
-            "in": "body",
-            "description": "Gives you the notes",
-            "schema": {
-              "$ref": "#/definitions/Note"
-            }
-          }
-        ],
+        "description": "Fetch all notes...",        
         "produces": ["application/json"],
         "responses": {
           "201": {
@@ -113,18 +108,25 @@
           "500": {
             "description": "Internal server error"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
-    "/notes/{:_id}": {
+    "/notes/{_id}": {
       "get": {
         "tags": ["Notes"],
         "description": "Fetch notes with id...",
         "parameters": [
           {
-            "name": "Fetch notes with id",
-            "in": "body",
-            "description": "Gives your notes"
+            "name": "_id",
+            "in": "path",
+            "description": "Provide Id of note to fetch",
+            "required": true,
+            "type":"string"      
           }
         ],
         "produces": ["application/json"],
@@ -135,16 +137,23 @@
           "500": {
             "description": "Internal server error"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "put": {
         "tags": ["Notes"],
         "description": "Update notes with id...",
         "parameters": [
           {
-            "name": "Modify notes with id",
-            "in": "body",
-            "description": "Modify your notes",
+            "name": "_id",
+            "in": "path",
+            "description": "Provide Id of note to update",
+            "required": true,
+            "type":"string",
             "schema": {
               "$ref": "#/definitions/Note"
             }
@@ -158,19 +167,23 @@
           "500": {
             "description": "Internal server error"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "delete": {
         "tags": ["Notes"],
         "description": "Delete notes with id...",
         "parameters": [
           {
-            "name": "Delete notes with id",
-            "in": "body",
-            "description": "Deletes your notes",
-            "schema": {
-              "$ref": "#/definitions/Note"
-            }
+            "name": "_id",
+            "in": "path",
+            "description": "Provide Id of note to delete",
+            "required": true,
+            "type":"string"          
           }
         ],
         "produces": ["application/json"],
@@ -181,7 +194,12 @@
           "500": {
             "description": "Internal server error"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     }
   },
@@ -232,5 +250,5 @@
         "name": "Authorization",
         "in": "header"
       }
-    }
+    }  
 }
